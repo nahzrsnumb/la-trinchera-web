@@ -1,7 +1,8 @@
 import React from "react";
 
 export default function LaTrincheraOficial() {
-  const whatsappUrl = "https://wa.me/56953747245"; // Reemplaza por tu número oficial
+  // Enlace oficial de comunicaciones con texto encriptado
+  const whatsappUrl = "https://wa.me/56953747245?text=Comandancia,%20solicito%20información%20para%20despliegue%20en%20La%20Trinchera.";
 
   return (
     <section className="relative bg-[#0a0c0a] text-neutral-200 py-16 px-4 sm:px-6 lg:px-8 overflow-hidden">
@@ -122,7 +123,7 @@ export default function LaTrincheraOficial() {
               </div>
             </div>
 
-            {/* Botón WhatsApp alta visibilidad */}
+            {/* Botón WhatsApp funcional */}
             <a
               href={whatsappUrl}
               target="_blank"
