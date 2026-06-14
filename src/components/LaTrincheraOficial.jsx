@@ -1,7 +1,7 @@
 import React from "react";
 
 export default function LaTrincheraOficial() {
-  const whatsappUrl = "https://wa.me/56900000000"; // Reemplaza por tu número oficial
+  const whatsappUrl = "https://wa.me/56953747245"; // Reemplaza por tu número oficial
 
   return (
     <section className="relative bg-[#0a0c0a] text-neutral-200 py-16 px-4 sm:px-6 lg:px-8 overflow-hidden">
