@@ -35,35 +35,25 @@ export default function UbicacionVision() {
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-          {/* Coordenadas e instrucciones */}
+          {/* Instrucciones */}
           <div className="bg-[#0f120e] border border-neutral-800 rounded-md p-6">
             <div className="flex items-center justify-between border-b border-neutral-800 pb-4">
               <h3 className="text-lg font-bold uppercase tracking-wide text-white">
-                Punto de Despliegue
+                Protocolo de Llegada
               </h3>
               <span className="font-mono text-2xl font-extrabold text-[#7a8c4f] opacity-60">
                 ◎
               </span>
             </div>
 
-            <div className="mt-5 bg-black/40 border border-neutral-800 rounded-sm p-4">
-              <p className="text-xs uppercase tracking-widest text-neutral-500 mb-1">
-                Coordenadas GPS
-              </p>
-              <p className="font-mono text-xl text-orange-500 font-bold">
-                {intelData.coordenadas}
-              </p>
-              <p className="text-sm text-neutral-400 mt-1">{intelData.ciudad}</p>
-            </div>
-
             <p className="mt-6 text-xs font-mono text-orange-500 uppercase tracking-widest mb-3">
-              Instrucciones Tácticas de Llegada
+              Instrucciones Tácticas
             </p>
-            <ul className="space-y-2.5">
+            <ul className="space-y-3.5">
               {intelData.instrucciones.map((paso, i) => (
                 <li key={i} className="flex items-start gap-3 text-sm text-neutral-400">
-                  <span className="font-mono text-[#7a8c4f] font-bold flex-shrink-0">
-                    {String(i + 1).padStart(2, "0")}
+                  <span className="font-mono text-[#7a8c4f] font-bold flex-shrink-0 mt-0.5">
+                    [{String(i + 1).padStart(2, "0")}]
                   </span>
                   <span>{paso}</span>
                 </li>
@@ -71,39 +61,32 @@ export default function UbicacionVision() {
             </ul>
           </div>
 
-          {/* Visión */}
-          <div className="bg-[#0f120e] border border-neutral-800 rounded-md p-6 flex flex-col">
-            <div className="flex items-center justify-between border-b border-neutral-800 pb-4">
-              <h3 className="text-lg font-bold uppercase tracking-wide text-white">
-                Visión del Campo
-              </h3>
-              <span className="font-mono text-2xl font-extrabold text-orange-500 opacity-60">
-                ★
-              </span>
-            </div>
-
-            <div className="mt-6 space-y-4 text-neutral-300 leading-relaxed flex-1">
-              <p>
-                <span className="text-[#7a8c4f] font-bold">La Trinchera Oficial</span> no
-                es solo un campo: es el estándar de evolución del Airsoft táctico en
-                la Región del Maule.
+          {/* Mapa Satelital Inyectado */}
+          <div className="bg-[#0f120e] border border-neutral-800 rounded-md p-2 flex flex-col relative overflow-hidden group">
+            <div className="absolute top-4 left-4 z-10 bg-black/80 border border-neutral-800 px-3 py-1.5 rounded-sm backdrop-blur-sm pointer-events-none">
+              <p className="text-[10px] font-mono text-orange-500 uppercase tracking-widest mb-0.5">
+                Enlace Satelital Activo
               </p>
-              <p className="text-sm text-neutral-400">
-                Construimos un entorno donde la disciplina, el realismo y el juego
-                limpio definen al operador. Cada partida está diseñada para elevar el
-                nivel competitivo y proyectar superioridad operativa.
-              </p>
-              <p className="text-sm text-neutral-400">
-                Nuestra misión: consolidar una comunidad de élite, con infraestructura
-                profesional y reglas claras que posicionen a Talca como referente
-                nacional.
+              <p className="text-xs font-bold text-white font-mono">
+                {intelData.coordenadas}
               </p>
             </div>
-
-            <div className="mt-6 border-l-2 border-orange-500 pl-4">
-              <p className="font-mono text-sm text-white italic">
-                "El terreno se respeta. El operador se forja."
-              </p>
+            
+            <div className="w-full h-full min-h-[300px] rounded-sm overflow-hidden bg-neutral-900 relative">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!4v1781478117932!6m8!1m7!1spnkyxVaxBqxxRLKAbo_mkg!2m2!1d-35.46048505856353!2d-71.70442266788469!3f207.7719902548942!4f-1.6133527758348407!5f0.7820865974627469"
+                width="100%"
+                height="100%"
+                style={{ 
+                  border: 0, 
+                  // Este filtro mágico convierte el mapa normal en un mapa oscuro táctico
+                  filter: "invert(90%) hue-rotate(180deg) brightness(80%) contrast(120%) grayscale(20%)" 
+                }}
+                allowFullScreen=""
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                className="absolute inset-0 transition-opacity duration-500 opacity-80 group-hover:opacity-100"
+              ></iframe>
             </div>
           </div>
         </div>
